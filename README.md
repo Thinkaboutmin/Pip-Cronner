@@ -10,3 +10,8 @@ Next, execute with root the pip3_automatizer.sh
 After, modify the configuration file with nano, vim or whatever editor you have.
 
 Enjoy!
+
+
+### Notes
+
+This was done for my college, so expect bugs here and there.
