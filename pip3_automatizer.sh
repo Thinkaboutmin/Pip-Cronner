@@ -138,10 +138,12 @@ function install_process {
 	# This fixes the empty space that is created when cron doesn't have anything to put before
 	if [ ! -z "$(crontab -l)" ]
 	then
-		(crontab -l && echo "30 12,00 * * * $CONF_FOLDER/$SCRIPT_SOURCE") | crontab
+		(crontab -l && echo "30 12,00 * * * bash $CONF_FOLDER/$SCRIPT_SOURCE") | crontab
 	else
-		echo "30 12,00 * * * $CONF_FOLDER/$SCRIPT_SOURCE" | crontab
+		echo "30 12,00 * * * bash $CONF_FOLDER/$SCRIPT_SOURCE" | crontab
 	fi
+	
+	chmod +x "$CONF_FOLDER/$SCRIPT_SOURCE"
 
 	verbose "Done configuring crontab!" $INFO
 
