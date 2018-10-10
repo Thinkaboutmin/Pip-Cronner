@@ -42,7 +42,7 @@ do
 		counter=$(($counter + 1))
 		verbose_log "$PROGRAM_PIP is marked to be updated" $INFO
 	else
-		verbose_log "The $PROGRAM_PIP does not exist! Ignoring" $ERROR
+		verbose_log "$PROGRAM_PIP does not exist! Ignoring..." $ERROR
 	fi
 done
 
@@ -53,9 +53,9 @@ do
 	verbose_log "The $UPDATE_PROGRAM will be updated now" $INFO
 	if pip -q install $UPDATE_PROGRAM --upgrade
 	then
-		verbose_log "The $UPDATE_PROGRAM was succefully updated" $INFO
+		verbose_log "$UPDATE_PROGRAM was sucessfully updated" $INFO
 	else
-		verbose_log "The $UPDATE_PROGRAM was not updated, error arrived" $ERROR
+		verbose_log "$UPDATE_PROGRAM was not updated, something went wrong" $ERROR
 	fi
 
 done
