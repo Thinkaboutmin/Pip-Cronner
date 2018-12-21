@@ -26,7 +26,7 @@ function verbose {
 function check_requirements {
 	if (($(id -u) != 0))
 	then
-		verbose "You need to run this script as root!" $ERROR
+		verbose "This script need to be executed as root!" $ERROR
 		return 1
 	elif ! hash python 2>/dev/null
 	then
@@ -41,7 +41,7 @@ function check_requirements {
 		verbose "Crontab wasn't found on the system!" $ERROR
 		return 1
 	else
-		verbose "Your passed in the system requirements!" $INFO
+		verbose "Seems ok in system requirements!" $INFO
 		return 0
 	fi
 }
@@ -88,7 +88,7 @@ function install_process {
 
 	verbose "Creating the folder and configuration file" $INFO
 
-	verbose "Configuration folder will be create at $CONF_FOLDER" $INFO
+	verbose "Configuration folder will be created at $CONF_FOLDER" $INFO
 
 	if [ -s $CONF_FOLDER ]
 	then
@@ -147,7 +147,7 @@ function install_process {
 
 	verbose "Done configuring crontab!" $INFO
 
-	verbose "Everything was configured, done!" $INFO
+	verbose "End of the installation!" $INFO
 
 	return 0
 }
@@ -159,7 +159,7 @@ function desinstall_process {
 
 	local TMP_LOG="/tmp/pip_updater.log"
 
-	verbose "Deleting pip script now" $INFO
+	verbose "Deleting the pip script now" $INFO
 	
 	# Rm -f is done to supress the error message
 	# Thus, the program seems to run as it's expected
@@ -170,7 +170,7 @@ function desinstall_process {
 		verbose "Folder couldn't be deleted, moving on" $ERROR
 	fi
 
-	verbose "Deleting crontab configuration" $INFO
+	verbose "Deleting the crontab configuration" $INFO
 
 	if crontab -l | grep -q "$CONF_FOLDER/$SCRIPT_SOURCE"
 	then
